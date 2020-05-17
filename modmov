@@ -1,0 +1,61 @@
+#!/bin/bash
+
+dir=$(dirname $(realpath $0))
+python="python3"
+green="\x1b[32m"
+yellow="\x1b[33m"
+purple="\x1b[35m"
+end="\x1b[0m"
+task=$1;shift
+scripts="chapters compress defaults extract merge"
+if [[ $scripts =~ "$task" && $task != *" "* && $task != "" ]];then
+    $python "${dir}/${task}.py" "$@"
+else
+    echo "Welcome to modmov"
+    echo
+    echo "Modify Movies with ease using a collection of single task scripts"
+    echo
+    echo "Please specify the name of the task you wish to call"
+    echo "Each task has a different set of arguments, use --help for info"
+    echo "For example: './modmov merge --help' for help on the merge task"
+    echo
+    echo "usage: modmov TASK [OPTIONS...]"
+    echo
+    echo "The following tasks are included:"
+    echo -e "${green}chapters${end}"
+    echo "  Add a list of chapters to an mkv"
+    echo -e "  ${yellow}Modifies the original${end}"
+    echo -e "  ${purple}accepts: a single mkv${end}"
+    echo -e "  ${purple}requires: mkvpropedit (mkvtoolnix)${end}"
+    echo -e "${green}compress${end}"
+    echo "  Compress the bitrate of any mkv or mp4"
+    echo "  This task will only modify the bitrate, other aspects are untouched"
+    echo -e "  ${yellow}Creates a separate folder named 'Compressed'${end}"
+    echo -e "  ${purple}accepts: a folder with mkvs/mp4s or a single mkv/mp4${end}"
+    echo -e "  ${purple}requires: ffmpeg${end}"
+    echo -e "${green}defaults${end}"
+    echo "  Set the default audio/subtitle track for multiple mkvs"
+    echo "  This task will ask for more details interactively to select the tracks"
+    echo "  When multiple files share a track layout, the same defaults are applied"
+    echo -e "  ${yellow}Modifies the original${end}"
+    echo -e "  ${purple}accepts: a folder with mkvs or a single mkv${end}"
+    echo -e "  ${purple}requires: mkvpropedit and mkvinfo (mkvtoolnix)${end}"
+    echo -e "${green}extract${end}"
+    echo "  Extract a streamable mp4 from any mkv or mp4"
+    echo "  All movies will be extracted to a single track mp4 well-suited for streaming"
+    echo "  Only the first audio and first video track are extracted by default"
+    echo "  Subtiles are never included in the extracted mp4 file"
+    echo -e "  ${yellow}Creates a separate folder named 'Streamable'${end}"
+    echo -e "  ${purple}accepts: a folder with mkvs/mp4s or a single mp4/mkv${end}"
+    echo -e "  ${purple}requires: ffmpeg${end}"
+    echo -e "${green}merge${end}"
+    echo "  Merge mkv/mp4 files with srt/ass subtitles to mkv"
+    echo "  This process is also known as 'muxing' movies"
+    echo -e "  ${yellow}Creates a separate folder named 'Merged'${end}"
+    echo -e "  ${purple}accepts: a folder with mkvs/mp4s or a single mkv/mp4${end}"
+    echo -e "  ${purple}requires: mkvmerge (mkvtoolnix)${end}"
+    echo
+    echo "modmov is created by Jelmer van Arnhem"
+    echo "You may copy and modify the code under the terms of the MIT license"
+    echo "See https://github.com/Jelmerro/modmov for more information"
+fi
