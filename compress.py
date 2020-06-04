@@ -10,7 +10,7 @@ def handle_movie(folder, movie, compression):
     com_movie = os.path.join(folder, "Compressed", movie)
     movie = os.path.join(folder, movie)
     util.run_command(
-        f'ffmpeg -i "{movie}" -map 0:v -map 0:a -map 0:s -crf '
+        f'ffmpeg -i "{movie}" -map 0:v -map 0:a -map 0:s? -crf '
         f'{compression} "{com_movie}"')
 
 
