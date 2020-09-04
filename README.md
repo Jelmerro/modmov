@@ -17,6 +17,7 @@ All tasks can be called using the same `modmov` bash script.
 
 - Chapters - Add a list of chapters to an mkv
 - Compress - Compress the bitrate of any mkv or mp4
+- Concat - Concatenate all given movies into a single mp4
 - Defaults - Set the default audio/subtitle track for multiple mkvs
 - Extract - Extract a streamable mp4 from any mkv or mp4
 - Merge - Merge mkv/mp4 files with srt/ass subtitles to mkv (also called "muxing")

@@ -7,7 +7,7 @@ yellow="\x1b[33m"
 purple="\x1b[35m"
 end="\x1b[0m"
 task=$1;shift
-scripts="chapters compress defaults extract merge"
+scripts="chapters compress concat defaults extract merge"
 if [[ $scripts =~ "$task" && $task != *" "* && $task != "" ]];then
     $python "${dir}/${task}.py" "$@"
 else
@@ -32,6 +32,11 @@ else
     echo "  This task will only modify the bitrate, other aspects are untouched"
     echo -e "  ${yellow}Creates a separate folder named 'Compressed'${end}"
     echo -e "  ${purple}accepts: a folder with mkvs/mp4s or a single mkv/mp4${end}"
+    echo -e "  ${purple}requires: ffmpeg${end}"
+    echo -e "${green}concat${end}"
+    echo "  Concatenate all given movies into a single mp4"
+    echo -e "  ${yellow}Creates a separate movie named 'Concat.mp4'${end}"
+    echo -e "  ${purple}accepts: any number of movie files as separate arguments"
     echo -e "  ${purple}requires: ffmpeg${end}"
     echo -e "${green}defaults${end}"
     echo "  Set the default audio/subtitle track for multiple mkvs"
