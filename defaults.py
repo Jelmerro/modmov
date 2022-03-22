@@ -52,8 +52,8 @@ def extract_track_info(movie, complete_scan=False):
             type_number = subs_counter
         info.append({
             "id": f"{track_type[0]}{type_number}",
-            "default": mkv_property(track, "Default track flag"),
-            "forced": mkv_property(track, "Forced track flag"),
+            "default": mkv_property(track, '"Default track" flag'),
+            "forced": mkv_property(track, '"Forced display" flag'),
             "language": mkv_property(track, "Language"),
             "name": mkv_property(track, "Name")
         })

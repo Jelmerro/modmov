@@ -21,6 +21,7 @@ All tasks can be called using the same `modmov` bash script.
 - Defaults - Set the default audio/subtitle track for multiple mkvs
 - Extract - Extract a streamable mp4 from any mkv or mp4
 - Merge - Merge mkv/mp4 files with srt/ass subtitles to mkv (also called "muxing")
+- Lint - Check for common errors in movie files by running a set of linters
 
 The project is developed exclusively for Linux, although it might also work on Mac.
 

@@ -6,7 +6,7 @@ yellow="\x1b[33m"
 purple="\x1b[35m"
 end="\x1b[0m"
 task=$1;shift
-scripts="chapters compress concat defaults extract merge"
+scripts="chapters compress concat defaults extract merge lint"
 if [[ $scripts =~ "$task" && $task != *" "* && $task != "" ]];then
     python3 "${dir}/${task}.py" "$@"
 else
@@ -58,6 +58,12 @@ else
     echo -e "  ${yellow}Creates a separate folder named 'Merged'${end}"
     echo -e "  ${purple}accepts: a folder with mkvs/mp4s or a single mkv/mp4${end}"
     echo -e "  ${purple}requires: mkvmerge (mkvtoolnix)${end}"
+    echo -e "${green}lint${end}"
+    echo "  Find common errors in movie files by running a set of linters"
+    echo "  This is similar to code quality tools, but for movie files"
+    echo -e "  ${yellow}Does not currently modify files${end}"
+    echo -e "  ${purple}accepts: a folder with mkvs/mp4s ${end}"
+    echo -e "  ${purple}requires: mkvinfo (mkvtoolnix)${end}"
     echo
     echo "modmov is created by Jelmer van Arnhem"
     echo "You may copy and modify the code under the terms of the MIT license"
