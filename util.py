@@ -1,4 +1,5 @@
 import os
+import re
 import subprocess
 
 
@@ -52,3 +53,10 @@ def list_movies(location, allow_mp4=True):
         } for f in sorted(os.listdir(location))
         if f.endswith(".mkv") or (f.endswith(".mp4") and allow_mp4)
     ]
+
+
+def mkv_property(track, property_name):
+    result = re.search(fr"\|  \+ {property_name}: (.*)", track)
+    if result:
+        return result.group(1)
+    return ""

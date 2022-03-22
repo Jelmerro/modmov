@@ -21,13 +21,6 @@ def handle_movie(folder, movie, audio_list, subs_list, def_audio, def_subs):
     util.run_command(f'mkvpropedit "{movie}" {str_defaults}')
 
 
-def mkv_property(track, property_name):
-    match = re.search(fr"\|  \+ {property_name}: (.*)", track)
-    if match:
-        return match.group(1)
-    return ""
-
-
 def extract_track_info(movie, complete_scan=False):
     extra_args = ""
     if complete_scan:
@@ -41,7 +34,7 @@ def extract_track_info(movie, complete_scan=False):
     audio_counter = 0
     subs_counter = 0
     for track in regex.findall(mkvinfo_output):
-        track_type = mkv_property(track, "Track type")
+        track_type = util.mkv_property(track, "Track type")
         if track_type not in ["audio", "subtitles"]:
             continue
         if track_type == "audio":
@@ -52,10 +45,10 @@ def extract_track_info(movie, complete_scan=False):
             type_number = subs_counter
         info.append({
             "id": f"{track_type[0]}{type_number}",
-            "default": mkv_property(track, '"Default track" flag'),
-            "forced": mkv_property(track, '"Forced display" flag'),
-            "language": mkv_property(track, "Language"),
-            "name": mkv_property(track, "Name")
+            "default": util.mkv_property(track, '"Default track" flag'),
+            "forced": util.mkv_property(track, '"Forced display" flag'),
+            "language": util.mkv_property(track, "Language"),
+            "name": util.mkv_property(track, "Name")
         })
     return info
 
