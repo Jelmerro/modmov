@@ -24,13 +24,15 @@ def handle_movie(folder, movie, attachments):
         merge_command(folder, movie, "srt", attachments)
     elif os.path.isfile(os.path.join(folder, f"{base}.ass")):
         merge_command(folder, movie, "ass", attachments)
+    elif os.path.isfile(os.path.join(folder, f"{base}.mks")):
+        merge_command(folder, movie, "mks", attachments)
     else:
         util.cprint("No matching subtitle file found!", "red")
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
-        description="Merge mkv/mp4 files with srt/ass subtitles to mkv")
+        description="Merge mkv/mp4 files with srt/ass/mks subtitles to mkv")
     parser.add_argument(
         "location", help="Location of the folder/file to process")
     parser.add_argument(
@@ -42,5 +44,5 @@ if __name__ == "__main__":
         handle_movie(f["dir"], f["file"], args.attachments)
     if not files:
         print("No movie files found in the specified directory")
-        print("Input files are expected to be: .mkv, .mp4, .srt and .ass")
+        print("Input files are expected to be: .mkv or .mp4")
         print("All matched files will be merged to a single .mkv per movie")

@@ -53,7 +53,7 @@ else
     echo -e "  ${purple}accepts: a folder with mkvs/mp4s or a single mp4/mkv${end}"
     echo -e "  ${purple}requires: ffmpeg${end}"
     echo -e "${green}merge${end}"
-    echo "  Merge mkv/mp4 files with srt/ass subtitles to mkv"
+    echo "  Merge mkv/mp4 files with srt/ass/mks subtitles to mkv"
     echo "  This process is also known as 'muxing' movies"
     echo "  You can optionally specify additional resources like fonts or images"
     echo -e "  ${yellow}Creates a separate folder named 'Merged'${end}"
