@@ -24,6 +24,8 @@ def handle_movie(folder, movie, attachments):
         merge_command(folder, movie, "srt", attachments)
     elif os.path.isfile(os.path.join(folder, f"{base}.ass")):
         merge_command(folder, movie, "ass", attachments)
+    elif os.path.isfile(os.path.join(folder, f"{base}.ssa")):
+        merge_command(folder, movie, "ssa", attachments)
     elif os.path.isfile(os.path.join(folder, f"{base}.mks")):
         merge_command(folder, movie, "mks", attachments)
     else:
@@ -32,7 +34,7 @@ def handle_movie(folder, movie, attachments):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
-        description="Merge mkv/mp4 files with srt/ass/mks subtitles to mkv")
+        description="Merge mkv/mp4 files with srt/ass/ssa/mks subs to mkv")
     parser.add_argument(
         "location", help="Location of the folder/file to process")
     parser.add_argument(
