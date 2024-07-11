@@ -20,21 +20,16 @@ def merge_command(folder, movie, subtitle, attachments):
 def handle_movie(folder, movie, attachments):
     base = os.path.splitext(movie)[0]
     util.cprint(f"Found movie: '{movie}'", "green")
-    if os.path.isfile(os.path.join(folder, f"{base}.srt")):
-        merge_command(folder, movie, "srt", attachments)
-    elif os.path.isfile(os.path.join(folder, f"{base}.ass")):
-        merge_command(folder, movie, "ass", attachments)
-    elif os.path.isfile(os.path.join(folder, f"{base}.ssa")):
-        merge_command(folder, movie, "ssa", attachments)
-    elif os.path.isfile(os.path.join(folder, f"{base}.mks")):
-        merge_command(folder, movie, "mks", attachments)
-    else:
-        util.cprint("No matching subtitle file found!", "red")
+    for ext in ["srt", "ass", "ssa", "mks", "sub"]:
+        if os.path.isfile(os.path.join(folder, f"{base}.{ext}")):
+            merge_command(folder, movie, ext, attachments)
+            return
+    util.cprint("No matching subtitle file found!", "red")
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
-        description="Merge mkv/mp4 files with srt/ass/ssa/mks subs to mkv")
+        description="Merge mkv/mp4 files with srt/ass/ssa/mks/sub subs to mkv")
     parser.add_argument(
         "location", help="Location of the folder/file to process")
     parser.add_argument(
