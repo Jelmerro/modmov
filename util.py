@@ -26,6 +26,13 @@ def run_command(command):
     proc.communicate()
 
 
+def capture_command(command):
+    proc = subprocess.run(
+        command, shell=True,
+        stderr=subprocess.PIPE, stdout=subprocess.PIPE)
+    return proc.stdout.decode().strip(), proc.stderr.decode().strip()
+
+
 def escape(contents):
     contents = contents.replace('\\', '\\\\').replace('"', '\\"')
     contents = contents.replace('`', '\\`').replace('$', '\\$')

@@ -11,6 +11,8 @@ if __name__ == "__main__":
     args = parser.parse_args()
     with open("concat.temp.txt", "w") as c:
         for f in args.files:
-            c.write(f'file {f}\n')
-    util.run_command('ffmpeg -safe 0 -f concat -i concat.temp.txt Concat.mp4')
+            name = f.replace("'", "'\\''")
+            c.write(f"file '{name}'\n")
+    util.run_command(
+        'ffmpeg -y -safe 0 -f concat -i concat.temp.txt Concat.mp4')
     os.remove("concat.temp.txt")
