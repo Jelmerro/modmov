@@ -17,7 +17,7 @@ def extract_track_info(movie, complete_scan=False):
     if complete_scan:
         extra_args = "--all"
     proc = subprocess.run(
-        f'mkvinfo {extra_args} "{movie}"', shell=True,
+        f'mkvinfo {extra_args} "{util.escape(movie)}"', shell=True,
         stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     try:
         mkvinfo_output = proc.stdout.decode()

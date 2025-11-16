@@ -59,5 +59,6 @@ if __name__ == "__main__":
         sys.exit(1)
     processed_chapters = process_chapters(args.chapters)
     generate_xml_file(processed_chapters)
-    util.run_command(f'mkvpropedit --chapters chapters.temp.xml "{args.file}"')
+    util.run_command(f'mkvpropedit --chapters chapters.temp.xml "{
+        util.escape(args.file)}"')
     os.remove("chapters.temp.xml")

@@ -8,9 +8,9 @@ def handle_movie(folder, movie, subs):
     if not os.path.isdir(os.path.join(folder, "Extracted")):
         os.mkdir(os.path.join(folder, "Extracted"))
     util.cprint(f"Found movie: '{movie}'", "green")
-    movie_mp4 = os.path.join(
-        folder, "Extracted", re.sub(r"(\.mkv|\.mp4)$", ".mp4", movie))
-    movie = os.path.join(folder, movie)
+    movie_mp4 = util.escape(os.path.join(
+        folder, "Extracted", re.sub(r"(\.mkv|\.mp4)$", ".mp4", movie)))
+    movie = util.escape(os.path.join(folder, movie))
     if subs != "only":
         util.run_command(f'ffmpeg -y -i "{movie}" -c copy "{movie_mp4}"')
     if subs != "no":

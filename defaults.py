@@ -18,7 +18,7 @@ def handle_movie(folder, movie, audio_list, subs_list, def_audio, def_subs):
     if def_subs != "none":
         str_defaults += f"--edit track:{def_subs} --set flag-" \
             "default=1 --set flag-forced=0 "
-    util.run_command(f'mkvpropedit "{movie}" {str_defaults}')
+    util.run_command(f'mkvpropedit "{util.escape(movie)}" {str_defaults}')
 
 
 def extract_track_info(movie, complete_scan=False):
@@ -26,7 +26,7 @@ def extract_track_info(movie, complete_scan=False):
     if complete_scan:
         extra_args = "--all"
     proc = subprocess.run(
-        f'mkvinfo {extra_args} "{movie}"', shell=True,
+        f'mkvinfo {extra_args} "{util.escape(movie)}"', shell=True,
         stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     mkvinfo_output = proc.stdout.decode()
     regex = re.compile(r"\| \+ Track(?:.*\n\| {2,}?\+ .*)+")

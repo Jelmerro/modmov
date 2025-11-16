@@ -7,8 +7,8 @@ def handle_movie(folder, movie, compression):
     if not os.path.isdir(os.path.join(folder, "Compressed")):
         os.mkdir(os.path.join(folder, "Compressed"))
     util.cprint(f"Found movie: '{movie}'", "green")
-    com_movie = os.path.join(folder, "Compressed", movie)
-    movie = os.path.join(folder, movie)
+    com_movie = util.escape(os.path.join(folder, "Compressed", movie))
+    movie = util.escape(os.path.join(folder, movie))
     util.run_command(
         f'ffmpeg -y -i "{movie}" -map 0:v -map 0:a -map 0:s? -scodec copy -crf'
         f' {compression} "{com_movie}"')
