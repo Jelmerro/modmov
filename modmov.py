@@ -2,15 +2,9 @@
 import os
 import sys
 
-import chapters
-import compress
-import concat
-import defaults
-import extract
-import lint
-import merge
+from scripts import chapters, compress, concat, defaults, extract, lint, merge
 
-from util import cprint
+from scripts.util import cprint
 
 
 def show_help():
@@ -88,7 +82,7 @@ def main():
         merge
     ]
     valid_names = [n.__name__ for n in module_list]
-    if script_name not in valid_names:
+    if "scripts." + script_name not in valid_names:
         show_help()
     sys.argv = [os.path.abspath(script_name)] + sys.argv[2:]
     globals()[script_name].main()

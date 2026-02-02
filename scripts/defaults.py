@@ -3,7 +3,7 @@ import os
 import re
 import subprocess
 import sys
-import util
+from . import util
 
 
 def handle_movie(folder, movie, audio_list, subs_list, def_audio, def_subs):

@@ -6,7 +6,11 @@ description="Modify Movies with ease using a collection of single task scripts"
 license={text="MIT"}
 requires-python=">=3.9"
 [tool.setuptools]
+packages=["scripts"]
 include-package-data=true
+[tool.setuptools.package-data]
+"*"=["*.py"]
+scripts=["scripts"]
 [project.urls]
 Repository="https://github.com/Jelmerro/modmov"
 [project.scripts]

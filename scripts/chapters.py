@@ -2,7 +2,7 @@ import argparse
 import os
 import re
 import sys
-import util
+from . import util
 
 
 def exit_with_error(chapter):

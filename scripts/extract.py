@@ -1,7 +1,7 @@
 import argparse
 import os
 import re
-import util
+from . import util
 
 
 def handle_movie(folder, movie, subs):

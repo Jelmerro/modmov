@@ -11,9 +11,7 @@ Modify Movies with ease using a collection of single task scripts
 - Most tasks can execute for every movie in a folder, or on a single file
 - Remember just one command to modify your movies with ease: modmov
 
-# Tasks
-
-All tasks can be called using the same `modmov` bash script.
+All tasks can be called using the same `modmov` Python script:
 
 - Chapters - Add a list of chapters to an mkv
 - Compress - Compress the bitrate of any mkv or mp4
@@ -23,11 +21,48 @@ All tasks can be called using the same `modmov` bash script.
 - Merge - Merge mkv/mp4 files with srt/ass/ssa/mks/sub subtitles to mkv (muxing)
 - Lint - Check for common errors in movie files by running a set of linters
 
-The project is developed exclusively for Linux, although it might also work on Mac.
+## Install
+
+### Pip
+
+```bash
+pip install --user -I git+https://github.com/Jelmerro/modmov
+```
+
+### Python
+
+Download or clone the repo, then run `python modmov.py` directly.
+
+### [Github](https://github.com/Jelmerro/modmov/releases)
+
+Download a stable installer or executable for your platform from Github.
+
+### [Fedora](https://jelmerro.nl/fedora)
+
+I host a custom Fedora repository that you can use for automatic updates.
+
+```bash
+sudo dnf config-manager addrepo --from-repofile=https://jelmerro.nl/fedora/jelmerro.repo
+sudo dnf install modmov
+```
+
+## Contribute
+
+You can support my work on [ko-fi](https://ko-fi.com/Jelmerro) or [Github sponsors](https://github.com/sponsors/Jelmerro).
+Another way to help is to report issues or suggest new features.
+Please try to follow recommendations by flake8 and pylint when developing.
+For an example vimrc that can auto-format based on the included linters,
+you can check out my personal [vimrc](https://github.com/Jelmerro/vimrc).
+
+## Building
+
+To create your own builds you can use [jfpm](https://github.com/Jelmerro/jfpm).
+Please clone or download both this repo and jfpm, then run `../jfpm/release_py_deps.sh`.
+This will build releases for various platforms and output them to `dist`.
 
 # Usage
 
-Run `./modmov` without any arguments for help and usage details.
+Run `modmov` without any arguments for help and usage details.
 For every task, the following information is presented:
 
 - A brief summary of it's function (also see the list above)
@@ -35,27 +70,4 @@ For every task, the following information is presented:
 - The accepted movie input file types
 - Additional software that you will need to install on you system (for example ffmpeg)
 
-In short, most tasks are used like this: `./modmov <name> <location>`
-
-To use modmov everywhere on your system, simply create an alias to the bash script.
-
-# Structure
-
-Modmov is essentially a wrapper for more complex movie processing tools.
-The tasks are separated into python scripts and are called by the modmov bash script.
-The help output of modmov includes a list of the required tools for all the tasks.
-The python scripts use subprocess to call ffmpeg/mkvtoolnix commands.
-These tools are not included in this project and are covered by different licenses.
-
-# Future
-
-Each time I run into a movie processing related issue or challenge,
-the modmov script collection will be expanded with a simplified task to solve it.
-This way I do not have to remember a billion different configurations for specific tooling.
-You are welcome to add your own specific movie related task to this repository via a PR.
-
-# License
-
-The modmov script collection is created by [Jelmer van Arnhem](https://github.com/Jelmerro).
-You may copy and modify the code under the terms of the MIT license.
-See the LICENSE file for the exact terms and conditions.
+In short, most tasks are used like this: `modmov <name> <location>`

@@ -4,7 +4,7 @@ import re
 import subprocess
 import sys
 from glob import glob
-import util
+from . import util
 
 
 def time_to_sec(t):
@@ -155,7 +155,6 @@ def main():
         print("Input files are expected to be: .mkv")
         sys.exit()
     files = [os.path.join(base, f) for f in files]
-    current_info = ""
     all_err = 0
     all_warns = 0
     for f in files:
