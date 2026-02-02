@@ -27,7 +27,7 @@ def handle_movie(folder, movie, attachments):
     util.cprint("No matching subtitle file found!", "red")
 
 
-if __name__ == "__main__":
+def main():
     parser = argparse.ArgumentParser(
         description="Merge mkv/mp4 files with srt/ass/ssa/mks/sub subs to mkv")
     parser.add_argument(
@@ -43,3 +43,7 @@ if __name__ == "__main__":
         print("No movie files found in the specified directory")
         print("Input files are expected to be: .mkv or .mp4")
         print("All matched files will be merged to a single .mkv per movie")
+
+
+if __name__ == "__main__":
+    main()

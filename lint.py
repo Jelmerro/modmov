@@ -142,7 +142,7 @@ def print_track_errors(f, info):
     return len(errors), len(warnings)
 
 
-if __name__ == "__main__":
+def main():
     parser = argparse.ArgumentParser(
         description="Run a set of linters to find out if the movies are clean")
     parser.add_argument(
@@ -167,3 +167,7 @@ if __name__ == "__main__":
             all_err += err
             all_warns += warn
     util.cprint(f"\nTotal: {all_err} errors and {all_warns} warnings", "blue")
+
+
+if __name__ == "__main__":
+    main()

@@ -64,7 +64,7 @@ def print_track_info(info):
     util.cprint("You can also pick 'none' as the default below")
 
 
-if __name__ == "__main__":
+def main():
     parser = argparse.ArgumentParser(
         description="Set the default audio/subtitle track for multiple mkvs")
     parser.add_argument(
@@ -104,3 +104,7 @@ if __name__ == "__main__":
         handle_movie(
             f["dir"], f["file"],
             audio_tracks, sub_tracks, audio_track, sub_track)
+
+
+if __name__ == "__main__":
+    main()

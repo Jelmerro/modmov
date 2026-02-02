@@ -23,7 +23,7 @@ def handle_movie(folder, movie, subs):
                 util.run_command(f'ffmpeg -y -i "{movie}" -c copy "{output}"')
 
 
-if __name__ == "__main__":
+def main():
     parser = argparse.ArgumentParser(
         description="Extract a streamable mp4 from any mkv or mp4")
     parser.add_argument(
@@ -40,3 +40,7 @@ if __name__ == "__main__":
         print("Input files are expected to be: .mkv or .mp4")
         print("All matched files will be extracted to a single mp4 per movie")
         print("Optionally you can extract the subtitles to the right file too")
+
+
+if __name__ == "__main__":
+    main()

@@ -3,7 +3,7 @@ import os
 import util
 
 
-if __name__ == "__main__":
+def main():
     parser = argparse.ArgumentParser(
         description="Concatenate all given movies into a single mp4")
     parser.add_argument(
@@ -16,3 +16,7 @@ if __name__ == "__main__":
     util.run_command(
         'ffmpeg -y -safe 0 -f concat -i concat.temp.txt Concat.mp4')
     os.remove("concat.temp.txt")
+
+
+if __name__ == "__main__":
+    main()

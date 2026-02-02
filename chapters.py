@@ -42,7 +42,7 @@ def generate_xml_file(chapters):
         f.write(output_string)
 
 
-if __name__ == "__main__":
+def main():
     parser = argparse.ArgumentParser(
         description="Add a list of chapters to an mkv")
     parser.add_argument("file", help="Location of the mkv file to modify")
@@ -62,3 +62,7 @@ if __name__ == "__main__":
     util.run_command(f'mkvpropedit --chapters chapters.temp.xml "{
         util.escape(args.file)}"')
     os.remove("chapters.temp.xml")
+
+
+if __name__ == "__main__":
+    main()

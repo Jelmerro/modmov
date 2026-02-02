@@ -1,0 +1,13 @@
+[project]
+name="modmov"
+version="1.0.0"
+authors=[{name="Jelmer van Arnhem"}]
+description="Modify Movies with ease using a collection of single task scripts"
+license={text="MIT"}
+requires-python=">=3.9"
+[tool.setuptools]
+include-package-data=true
+[project.urls]
+Repository="https://github.com/Jelmerro/modmov"
+[project.scripts]
+modmov="modmov:main"

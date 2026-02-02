@@ -14,7 +14,7 @@ def handle_movie(folder, movie, compression):
         f' {compression} "{com_movie}"')
 
 
-if __name__ == "__main__":
+def main():
     parser = argparse.ArgumentParser(
         description="Compress the bitrate of any mkv or mp4")
     parser.add_argument(
@@ -30,3 +30,7 @@ if __name__ == "__main__":
         print("No movie files found in the specified directory")
         print("Input files are expected to be: .mkv or .mp4")
         print("All matched files will be compressed to reduce size")
+
+
+if __name__ == "__main__":
+    main()
